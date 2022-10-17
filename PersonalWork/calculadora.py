@@ -7,6 +7,9 @@ frame = Frame(master=janela,bg= "purple3",padx=10)
 frame.pack()
 entrada = Entry(master=frame,relief=SUNKEN, borderwidth=3,width= 30)
 entrada.grid(row=0,column=0,columnspan=3,ipady=2,pady=2)
+expandiu = False
+cientifica = Frame(master=janela,bg="purple3",padx=10)
+
 
 def click(num):
   entrada.insert(END,num)
@@ -24,11 +27,21 @@ def limpar():
 
 def porcentagem():
   try:
-    y=int(eval(entrada.get()))
+    y=float(eval(entrada.get()))
     entrada.delete(0,END)
     entrada.insert(0,(y/100))
   except:
     tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def expandir():
+  global expandiu
+  if expandiu == False:
+    cientifica.pack()
+    expandiu = True
+  else:
+    cientifica.pack_forget()
+    expandiu = False
+  
 
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
@@ -51,8 +64,6 @@ botao9.grid(row=4, column=2,pady=2)
 botao0 = Button(master=frame,text="0",padx=15,pady=5,width=3,command=lambda:click(0))
 botao0.grid(row=5, column=1,pady=2)
 
-botao_ponto = Button(master=frame,text=".",padx=15,pady=5,width=3,command=lambda:click('.'))
-botao_ponto.grid(row=5,column=2,pady=2)
 
 botao_soma = Button(master=frame, text="+",padx=15,pady=5,width=3,command=lambda: click('+'))
 botao_soma.grid(row=4,column=3,pady=2)
@@ -69,6 +80,11 @@ botao_limpar = Button(master=frame, text="Limpar",padx=15,pady=5,width=12,comman
 botao_limpar.grid(row=1,column=0,columnspan=2,pady=2)
 botao_igual = Button(master=frame, text="=",padx=15,pady=5,width=3,command=igual)
 botao_igual.grid(row=5,column=3,columnspan=1,pady=2)
+botao_ponto = Button(master=frame,text=".",padx=15,pady=5,width=3,command=lambda:click('.'))
+botao_ponto.grid(row=5,column=2,pady=2)
 
+
+botao_expandir = Button(master=frame, text="Expandir",padx=15,pady=5,width=3,command=expandir)
+botao_expandir.grid(row=5,column=0,pady=2)
 
 janela.mainloop()
