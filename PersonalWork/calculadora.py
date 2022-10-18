@@ -99,6 +99,30 @@ def tan():
   except:
     tkinter.messagebox.showinfo("Error","Syntax Error")
 
+def sinh():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.sinh(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def cosh():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.cosh(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def tanh():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.tanh(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
 # Números
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
@@ -146,6 +170,13 @@ botao_cos = Button(master=cientifica,text="Cos",padx=15,pady=5,width=3,command=c
 botao_cos.grid(row=3,column=1,pady=2)
 botao_tan = Button(master=cientifica,text="Tan",padx=15,pady=5,width=3,command=tan)
 botao_tan.grid(row=3,column=2,pady=2)
+botao_sinh = Button(master=cientifica,text="Sinh",padx=15,pady=5,width=3,command=sinh)
+botao_sinh.grid(row=4,column=0,pady=2)
+botao_cosh = Button(master=cientifica,text="Cosh",padx=15,pady=5,width=3,command=cosh)
+botao_cosh.grid(row=4,column=1,pady=2)
+botao_tanh = Button(master=cientifica,text="Tanh",padx=15,pady=5,width=3,command=tanh)
+botao_tanh.grid(row=4,column=2,pady=2)
+
 
 
 # Utilizades e símbolos
