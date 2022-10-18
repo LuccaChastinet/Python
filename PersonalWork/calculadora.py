@@ -177,6 +177,7 @@ def M_minus():
     tkinter.messagebox.showinfo("Error","Caixa vazia/Memória não existe")
 
 # Números
+
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
 botao2 = Button(master=frame,text="2",padx=15,pady=5,width=3,command=lambda:click(2))
@@ -199,6 +200,7 @@ botao0 = Button(master=frame,text="0",padx=15,pady=5,width=3,command=lambda:clic
 botao0.grid(row=5, column=1,pady=2)
 
 # Operações
+
 botao_soma = Button(master=frame, text="+",padx=15,pady=5,width=3,command=lambda: click('+'))
 botao_soma.grid(row=4,column=3,pady=2)
 botao_sub = Button(master=frame, text="-",padx=15,pady=5,width=3,command=lambda: click('-'))
@@ -237,7 +239,7 @@ botao_fatorial = Button(master=cientifica,text="x!",padx=15,pady=5,width=3,comma
 botao_fatorial.grid(row=2,column=2,pady=2)
 
 
-# Utilizades e símbolos
+# Utilidades e símbolos
 
 botao_limpar = Button(master=frame, text="Limpar",padx=15,pady=5,width=12,command=limpar)
 botao_limpar.grid(row=1,column=0,columnspan=2,pady=2)
