@@ -75,7 +75,31 @@ def raiz_2():
   except:
     tkinter.messagebox.showinfo("Error","Syntax Error")
 
+def sin():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.sin(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
 
+def cos():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.cos(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def tan():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.tan(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+# Números
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
 botao2 = Button(master=frame,text="2",padx=15,pady=5,width=3,command=lambda:click(2))
@@ -97,7 +121,7 @@ botao9.grid(row=4, column=2,pady=2)
 botao0 = Button(master=frame,text="0",padx=15,pady=5,width=3,command=lambda:click(0))
 botao0.grid(row=5, column=1,pady=2)
 
-
+# Operações
 botao_soma = Button(master=frame, text="+",padx=15,pady=5,width=3,command=lambda: click('+'))
 botao_soma.grid(row=4,column=3,pady=2)
 botao_sub = Button(master=frame, text="-",padx=15,pady=5,width=3,command=lambda: click('-'))
@@ -108,18 +132,6 @@ botao_div = Button(master=frame, text="/",padx=15,pady=5,width=3,command=lambda:
 botao_div.grid(row=1,column=3,pady=2)
 botao_porcentagem = Button(master=frame, text="%",padx=15,pady=5,width=3,command=porcentagem)
 botao_porcentagem.grid(row=1,column=2,pady=2)
-
-botao_limpar = Button(master=frame, text="Limpar",padx=15,pady=5,width=12,command=limpar)
-botao_limpar.grid(row=1,column=0,columnspan=2,pady=2)
-botao_igual = Button(master=frame, text="=",padx=15,pady=5,width=3,command=igual)
-botao_igual.grid(row=5,column=3,columnspan=1,pady=2)
-botao_ponto = Button(master=frame,text=".",padx=15,pady=5,width=3,command=lambda:click('.'))
-botao_ponto.grid(row=5,column=2,pady=2)
-
-botao_paren_1 = Button(master=cientifica,text="(",padx=15,pady=5,width=3,command=lambda: click('('))
-botao_paren_1.grid(row=0,column=0,pady=2)
-botao_paren_2 = Button(master=cientifica,text=")",padx=15,pady=5,width=3,command=lambda: click(')'))
-botao_paren_2.grid(row=0,column=1,pady=2)
 botao_ao_2 = Button(master=cientifica,text="x²",padx=15,pady=5,width=3,command=potenciacao_2)
 botao_ao_2.grid(row=1,column=0,pady=2)
 botao_ao_x = Button(master=cientifica,text="x*",padx=15,pady=5,width=3,command=lambda: click('**'))
@@ -128,6 +140,26 @@ botao_raiz_2 = Button(master=cientifica,text="²√",padx=15,pady=5,width=3,comm
 botao_raiz_2.grid(row=2,column=0,pady=2)
 botao_raiz_x = Button(master=cientifica,text="*√",padx=15,pady=5,width=3,command=lambda: click(' |raiz_de| '))
 botao_raiz_x.grid(row=2,column=1,pady=2)
+botao_sin = Button(master=cientifica,text="Sin",padx=15,pady=5,width=3,command=sin)
+botao_sin.grid(row=3,column=0,pady=2)
+botao_cos = Button(master=cientifica,text="Cos",padx=15,pady=5,width=3,command=cos)
+botao_cos.grid(row=3,column=1,pady=2)
+botao_tan = Button(master=cientifica,text="Tan",padx=15,pady=5,width=3,command=tan)
+botao_tan.grid(row=3,column=2,pady=2)
+
+
+# Utilizades e símbolos
+
+botao_limpar = Button(master=frame, text="Limpar",padx=15,pady=5,width=12,command=limpar)
+botao_limpar.grid(row=1,column=0,columnspan=2,pady=2)
+botao_igual = Button(master=frame, text="=",padx=15,pady=5,width=3,command=igual)
+botao_igual.grid(row=5,column=3,columnspan=1,pady=2)
+botao_ponto = Button(master=frame,text=".",padx=15,pady=5,width=3,command=lambda:click('.'))
+botao_ponto.grid(row=5,column=2,pady=2)
+botao_parenteses_1 = Button(master=cientifica,text="(",padx=15,pady=5,width=3,command=lambda: click('('))
+botao_parenteses_1.grid(row=0,column=0,pady=2)
+botao_parenteses_2 = Button(master=cientifica,text=")",padx=15,pady=5,width=3,command=lambda: click(')'))
+botao_parenteses_2.grid(row=0,column=1,pady=2)
 botao_expandir = Button(master=frame, text="Expandir",padx=15,pady=5,width=3,command=expandir)
 botao_expandir.grid(row=5,column=0,pady=2)
 
