@@ -1,10 +1,27 @@
 from tkinter import *
 import tkinter.messagebox
+import math
+
+class Infix:
+    def __init__(self, function):
+        self.function = function
+    def __ror__(self, other):
+        return Infix(lambda x, self=self, other=other: self.function(other, x))
+    def __or__(self, other):
+        return self.function(other)
+    def __rlshift__(self, other):
+        return Infix(lambda x, self=self, other=other: self.function(other, x))
+    def __rshift__(self, other):
+        return self.function(other)
+    def __call__(self, value1, value2):
+        return self.function(value1, value2)
+
+raiz_de = Infix(lambda x,y : x**(1.0/y))
 
 janela = Tk()
 janela.title("Calculadora em Python")
 frame = Frame(master=janela,bg= "purple3",padx=10)
-frame.pack()
+frame.pack(side=LEFT)
 entrada = Entry(master=frame,relief=SUNKEN, borderwidth=3,width= 30)
 entrada.grid(row=0,column=0,columnspan=3,ipady=2,pady=2)
 expandiu = False
@@ -36,12 +53,28 @@ def porcentagem():
 def expandir():
   global expandiu
   if expandiu == False:
-    cientifica.pack()
+    cientifica.pack(side=LEFT)
     expandiu = True
   else:
     cientifica.pack_forget()
     expandiu = False
-  
+
+def potenciacao_2():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(y**2))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def raiz_2():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.sqrt(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
 
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
@@ -83,7 +116,18 @@ botao_igual.grid(row=5,column=3,columnspan=1,pady=2)
 botao_ponto = Button(master=frame,text=".",padx=15,pady=5,width=3,command=lambda:click('.'))
 botao_ponto.grid(row=5,column=2,pady=2)
 
-
+botao_paren_1 = Button(master=cientifica,text="(",padx=15,pady=5,width=3,command=lambda: click('('))
+botao_paren_1.grid(row=0,column=0,pady=2)
+botao_paren_2 = Button(master=cientifica,text=")",padx=15,pady=5,width=3,command=lambda: click(')'))
+botao_paren_2.grid(row=0,column=1,pady=2)
+botao_ao_2 = Button(master=cientifica,text="x²",padx=15,pady=5,width=3,command=potenciacao_2)
+botao_ao_2.grid(row=1,column=0,pady=2)
+botao_ao_x = Button(master=cientifica,text="x*",padx=15,pady=5,width=3,command=lambda: click('**'))
+botao_ao_x.grid(row=1,column=1,pady=2)
+botao_raiz_2 = Button(master=cientifica,text="²√",padx=15,pady=5,width=3,command=raiz_2)
+botao_raiz_2.grid(row=2,column=0,pady=2)
+botao_raiz_x = Button(master=cientifica,text="*√",padx=15,pady=5,width=3,command=lambda: click(' |raiz_de| '))
+botao_raiz_x.grid(row=2,column=1,pady=2)
 botao_expandir = Button(master=frame, text="Expandir",padx=15,pady=5,width=3,command=expandir)
 botao_expandir.grid(row=5,column=0,pady=2)
 
