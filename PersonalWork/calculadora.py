@@ -123,6 +123,30 @@ def tanh():
   except:
     tkinter.messagebox.showinfo("Error","Syntax Error")
 
+def log():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.log(y,10)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def ln():
+  try:
+    y=float(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.log(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def fatorial():
+  try:
+    y=int(eval(entrada.get()))
+    entrada.delete(0,END)
+    entrada.insert(0,(math.factorial(y)))
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
 # Números
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
@@ -176,8 +200,12 @@ botao_cosh = Button(master=cientifica,text="Cosh",padx=15,pady=5,width=3,command
 botao_cosh.grid(row=4,column=1,pady=2)
 botao_tanh = Button(master=cientifica,text="Tanh",padx=15,pady=5,width=3,command=tanh)
 botao_tanh.grid(row=4,column=2,pady=2)
-
-
+botao_log = Button(master=cientifica,text="Log",padx=15,pady=5,width=3,command=log)
+botao_log.grid(row=0,column=2,pady=2)
+botao_ln = Button(master=cientifica,text="ln",padx=15,pady=5,width=3,command=ln)
+botao_ln.grid(row=1,column=2,pady=2)
+botao_fatorial = Button(master=cientifica,text="x!",padx=15,pady=5,width=3,command=fatorial)
+botao_fatorial.grid(row=2,column=2,pady=2)
 
 # Utilizades e símbolos
 
