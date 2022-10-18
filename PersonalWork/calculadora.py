@@ -20,13 +20,15 @@ raiz_de = Infix(lambda x,y : x**(1.0/y))
 
 janela = Tk()
 janela.title("Calculadora em Python")
-frame = Frame(master=janela,bg= "purple3",padx=10)
-frame.pack(side=LEFT)
+texto = Label(master=janela,text= "Feito por Lucca Maia Chastinet",bg="purple3")
+texto.pack(side = BOTTOM,expand=True,fill=BOTH)
+frame = Frame(master=janela,bg= "purple3",padx=5)
+frame.pack(side=LEFT,expand=True,fill=BOTH)
 entrada = Entry(master=frame,relief=SUNKEN, borderwidth=3,width= 30)
-entrada.grid(row=0,column=0,columnspan=3,ipady=2,pady=2)
-expandiu = False
+entrada.grid(row=0,column=0,columnspan=3,padx=2,ipady=6,pady=2)
 cientifica = Frame(master=janela,bg="purple3",padx=10)
-
+expandiu = False
+memoria = ""
 
 def click(num):
   entrada.insert(END,num)
@@ -53,7 +55,7 @@ def porcentagem():
 def expandir():
   global expandiu
   if expandiu == False:
-    cientifica.pack(side=LEFT)
+    cientifica.pack(side=LEFT,expand=True,fill=BOTH)
     expandiu = True
   else:
     cientifica.pack_forget()
@@ -147,6 +149,33 @@ def fatorial():
   except:
     tkinter.messagebox.showinfo("Error","Syntax Error")
 
+def M_plus():
+  try:
+    global memoria
+    memoria = float(eval(entrada.get()))
+  except:
+    tkinter.messagebox.showinfo("Error","Caixa vazia")
+
+def MRC():
+  try:
+    global memoria
+    entrada.delete(0,END)
+    entrada.insert(0,memoria)
+  except:
+    tkinter.messagebox.showinfo("Error","Syntax Error")
+
+def apagar_memoria():
+    global memoria
+    memoria = ""
+
+def M_minus():
+  try:
+    global memoria
+    minus = float(eval(entrada.get()))
+    memoria = memoria-minus
+  except:
+    tkinter.messagebox.showinfo("Error","Caixa vazia/Memória não existe")
+
 # Números
 botao1 = Button(master=frame,text="1",padx=15,pady=5,width=3,command=lambda:click(1))
 botao1.grid(row=2, column=0,pady=2)
@@ -207,6 +236,7 @@ botao_ln.grid(row=1,column=2,pady=2)
 botao_fatorial = Button(master=cientifica,text="x!",padx=15,pady=5,width=3,command=fatorial)
 botao_fatorial.grid(row=2,column=2,pady=2)
 
+
 # Utilizades e símbolos
 
 botao_limpar = Button(master=frame, text="Limpar",padx=15,pady=5,width=12,command=limpar)
@@ -221,5 +251,15 @@ botao_parenteses_2 = Button(master=cientifica,text=")",padx=15,pady=5,width=3,co
 botao_parenteses_2.grid(row=0,column=1,pady=2)
 botao_expandir = Button(master=frame, text="Expandir",padx=15,pady=5,width=3,command=expandir)
 botao_expandir.grid(row=5,column=0,pady=2)
+botao_M_plus = Button(master=cientifica, text="M+",padx=15,pady=5,width=3,command=M_plus)
+botao_M_plus.grid(row=6,column=1,pady=2)
+botao_M_minus = Button(master=cientifica, text="M-",padx=15,pady=5,width=3,command=M_minus)
+botao_M_minus.grid(row=6,column=2,pady=2)
+botao_MRC = Button(master=cientifica, text="MRC",padx=15,pady=5,width=3,command=MRC)
+botao_MRC.grid(row=6,column=0,pady=2)
+botao_apaga_memoria = Button(master=cientifica, text="Apagar Memória",padx=15,pady=5,width=12,command=apagar_memoria)
+botao_apaga_memoria.grid(row=7,column=0,columnspan=3,pady=2)
+botao_pi = Button(master=frame, text="π",padx=15,pady=5,width=3,command=lambda: click(math.pi))
+botao_pi.grid(row=0,column=3,padx=2,pady=2)
 
 janela.mainloop()
